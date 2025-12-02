@@ -23,6 +23,7 @@
                     <li><a href="#inicio" class="nav-link active">Inicio</a></li>
                     <li><a href="#conocenos" class="nav-link">Conócenos</a></li>
                     <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#productos" class="nav-link">Productos</a></li>
                     <li><a href="#contacto" class="nav-link btn-contact">Contacto</a></li>
                 </ul>
                 <div class="mobile-menu-btn">
@@ -50,50 +51,34 @@
         <section id="conocenos" class="about">
             <div class="container about-container">
                 <div class="about-image">
-                    <img src="assets/images/alejandro.png" alt="Alejandro Contreras - Técnico Profesional">
+                    <img src="assets/images/alejandro.png" alt="Alejandro Contreras">
                     <div class="experience-badge">
-                        <span class="years">12+</span>
+                        <span class="years">10+</span>
                         <span class="text">Años de<br>Experiencia</span>
                     </div>
                 </div>
                 <div class="about-text">
                     <h2 class="section-title">Sobre Nosotros</h2>
-                    <h3 class="profile-name">Alejandro Contreras</h3>
-                    <p class="profile-desc">Técnico especializado con sólida experiencia en mantenimiento, reparación y
-                        diagnóstico de equipos tecnológicos. Mi misión es brindar soluciones rápidas y efectivas para
-                        mantener tu mundo digital funcionando sin interrupciones.</p>
+                    <h3>Alejandro Contreras</h3>
+                    <p class="lead">Fundador de AC Technicall Service</p>
+                    <p>Soy un apasionado por la tecnología con más de una década de experiencia en el sector. Mi misión
+                        es brindar soluciones técnicas confiables y eficientes, garantizando que tus equipos funcionen
+                        siempre al máximo rendimiento.</p>
+                    <p>En AC Technicall Service, nos especializamos en diagnóstico preciso y reparación de alta calidad,
+                        tratando cada equipo como si fuera propio.</p>
 
-                    <div class="credentials">
-                        <div class="credential-item">
-                            <i class="fas fa-briefcase"></i>
-                            <div>
-                                <h4>Experiencia Laboral</h4>
-                                <ul class="credential-list">
-                                    <li><strong>Jefe de Soporte Técnico</strong> - CyberCorp (2019 - Presente)</li>
-                                    <li><strong>Técnico Especialista</strong> - TechSolutions (2015 - 2019)</li>
-                                    <li><strong>Analista de Hardware</strong> - Innova Systems (2013 - 2015)</li>
-                                </ul>
-                            </div>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Diagnóstico Gratuito</span>
                         </div>
-                        <div class="credential-item">
-                            <i class="fas fa-certificate"></i>
-                            <div>
-                                <h4>Certificaciones Internacionales</h4>
-                                <ul class="credential-list">
-                                    <li>CompTIA A+ Certified Professional</li>
-                                    <li>Cisco Certified Network Associate (CCNA)</li>
-                                    <li>Samsung Mobile Repair Certified (Nivel 3)</li>
-                                    <li>Hikvision Security Systems Specialist</li>
-                                </ul>
-                            </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Garantía Certificada</span>
                         </div>
-                        <div class="credential-item">
-                            <i class="fas fa-university"></i>
-                            <div>
-                                <h4>Formación Académica</h4>
-                                <p>Ingeniería Electrónica - Universidad Tecnológica (En curso)</p>
-                                <p>Tecnólogo en Mantenimiento de Equipos de Cómputo - SENA</p>
-                            </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Soporte 24/7</span>
                         </div>
                     </div>
                 </div>
@@ -116,6 +101,8 @@
                             <h3>Computación Avanzada</h3>
                             <p>Diagnóstico preciso, mantenimiento preventivo y correctivo, optimización de rendimiento y
                                 actualización de hardware para laptops y desktops.</p>
+                            <button class="btn btn-outline-light btn-sm mt-3"
+                                onclick="openQuoteModal('Computación Avanzada')">Cotizar Reparación</button>
                         </div>
                     </article>
 
@@ -128,6 +115,8 @@
                             <h3>Dispositivos Móviles</h3>
                             <p>Servicio técnico especializado para smartphones y tablets. Cambio de pantallas, baterías,
                                 reparación de puertos de carga y recuperación de software.</p>
+                            <button class="btn btn-outline-light btn-sm mt-3"
+                                onclick="openQuoteModal('Dispositivos Móviles')">Cotizar Reparación</button>
                         </div>
                     </article>
 
@@ -140,6 +129,8 @@
                             <h3>Impresión y Periféricos</h3>
                             <p>Mantenimiento preventivo y correctivo de impresoras láser y de inyección. Limpieza
                                 profunda, reparación mecánica y configuración de drivers.</p>
+                            <button class="btn btn-outline-light btn-sm mt-3"
+                                onclick="openQuoteModal('Impresión y Periféricos')">Cotizar Reparación</button>
                         </div>
                     </article>
 
@@ -152,6 +143,8 @@
                             <h3>Sistemas CCTV</h3>
                             <p>Diseño e implementación de circuitos cerrados de televisión. Monitoreo remoto,
                                 configuración de DVR/NVR y mantenimiento de cámaras.</p>
+                            <button class="btn btn-outline-light btn-sm mt-3"
+                                onclick="openQuoteModal('Sistemas CCTV')">Cotizar Reparación</button>
                         </div>
                     </article>
 
@@ -164,8 +157,272 @@
                             <h3>Seguridad Electrónica</h3>
                             <p>Instalación de sistemas de alarma inteligentes para hogar y negocios. Sensores de
                                 movimiento, control de acceso y alertas en tiempo real.</p>
+                            <button class="btn btn-outline-light btn-sm mt-3"
+                                onclick="openQuoteModal('Seguridad Electrónica')">Cotizar Reparación</button>
                         </div>
                     </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="productos" class="products">
+            <div class="container">
+                <h2 class="section-title text-center">Productos y Accesorios</h2>
+                <p class="section-subtitle text-center">Calidad garantizada en repuestos y complementos para tus equipos
+                </p>
+
+                <div class="products-filter">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="moviles">Móviles</button>
+                    <button class="filter-btn" data-filter="computacion">Computación</button>
+                    <button class="filter-btn" data-filter="impresoras">Impresoras</button>
+                    <button class="filter-btn" data-filter="seguridad">Cámaras y Seguridad</button>
+                </div>
+
+                <div class="products-grid">
+                    <!-- Móviles - 4 productos -->
+                    <div class="product-card" data-category="moviles">
+                        <div class="product-image">
+                            <span class="product-tag device">Equipo</span>
+                            <img src="assets/images/product_smartphone.png" alt="Smartphone Android Pro">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Smartphone Android Pro</h4>
+                                <span class="product-price">$850.000</span>
+                            </div>
+                            <p class="product-desc">Pantalla AMOLED, 128GB, Batería 5000mAh.</p>
+                            <button class="btn btn-sm btn-outline-dark">Ver Detalles</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="moviles">
+                        <div class="product-image">
+                            <span class="product-tag part">Repuesto</span>
+                            <i class="fas fa-mobile-screen placeholder-icon"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Pantalla LCD Original</h4>
+                                <span class="product-price">$120.000</span>
+                            </div>
+                            <p class="product-desc">Compatible con múltiples modelos.</p>
+                            <button class="btn btn-sm btn-outline-dark">Cotizar</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="moviles">
+                        <div class="product-image">
+                            <span class="product-tag accessory">Accesorio</span>
+                            <img src="assets/images/product_charger.png" alt="Cargador Rápido">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Cargador Rápido 33W</h4>
+                                <span class="product-price">$45.000</span>
+                            </div>
+                            <p class="product-desc">Carga rápida universal USB-C.</p>
+                            <button class="btn btn-sm btn-outline-dark">Comprar</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="moviles">
+                        <div class="product-image">
+                            <span class="product-tag accessory">Accesorio</span>
+                            <img src="assets/images/product_headset.png" alt="Auriculares Bluetooth">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Auriculares Bluetooth</h4>
+                                <span class="product-price">$85.000</span>
+                            </div>
+                            <p class="product-desc">Cancelación de ruido activa.</p>
+                            <button class="btn btn-sm btn-outline-dark">Comprar</button>
+                        </div>
+                    </div>
+
+                    <!-- Computación - 4 productos -->
+                    <div class="product-card" data-category="computacion">
+                        <div class="product-image">
+                            <span class="product-tag device">Equipo</span>
+                            <img src="assets/images/product_laptop.png" alt="Laptop Core i5">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Laptop Profesional</h4>
+                                <span class="product-price">$2.100.000</span>
+                            </div>
+                            <p class="product-desc">Intel Core i5, 8GB RAM, 512GB SSD.</p>
+                            <button class="btn btn-sm btn-outline-dark">Ver Modelos</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="computacion">
+                        <div class="product-image">
+                            <span class="product-tag part">Repuesto</span>
+                            <i class="fas fa-hdd placeholder-icon"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Disco SSD 480GB</h4>
+                                <span class="product-price">$180.000</span>
+                            </div>
+                            <p class="product-desc">Aumenta la velocidad de tu equipo.</p>
+                            <button class="btn btn-sm btn-outline-dark">Cotizar</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="computacion">
+                        <div class="product-image">
+                            <span class="product-tag part">Repuesto</span>
+                            <i class="fas fa-memory placeholder-icon"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Memoria RAM 8GB DDR4</h4>
+                                <span class="product-price">$95.000</span>
+                            </div>
+                            <p class="product-desc">Compatible con laptops y desktops.</p>
+                            <button class="btn btn-sm btn-outline-dark">Cotizar</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="computacion">
+                        <div class="product-image">
+                            <span class="product-tag accessory">Accesorio</span>
+                            <img src="assets/images/product_keyboard.png" alt="Teclado Mecánico">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Teclado Mecánico RGB</h4>
+                                <span class="product-price">$150.000</span>
+                            </div>
+                            <p class="product-desc">Switches mecánicos, iluminación RGB.</p>
+                            <button class="btn btn-sm btn-outline-dark">Comprar</button>
+                        </div>
+                    </div>
+
+                    <!-- Impresoras - 4 productos -->
+                    <div class="product-card" data-category="impresoras">
+                        <div class="product-image">
+                            <span class="product-tag device">Equipo</span>
+                            <i class="fas fa-print placeholder-icon"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Impresora Láser HP</h4>
+                                <span class="product-price">$450.000</span>
+                            </div>
+                            <p class="product-desc">Monocromática, 30 ppm, WiFi.</p>
+                            <button class="btn btn-sm btn-outline-dark">Ver Detalles</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="impresoras">
+                        <div class="product-image">
+                            <span class="product-tag device">Equipo</span>
+                            <i class="fas fa-print placeholder-icon"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Multifuncional Epson</h4>
+                                <span class="product-price">$380.000</span>
+                            </div>
+                            <p class="product-desc">Imprime, escanea y copia a color.</p>
+                            <button class="btn btn-sm btn-outline-dark">Ver Detalles</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="impresoras">
+                        <div class="product-image">
+                            <span class="product-tag part">Repuesto</span>
+                            <i class="fas fa-fill-drip placeholder-icon"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Tóner Compatible</h4>
+                                <span class="product-price">$65.000</span>
+                            </div>
+                            <p class="product-desc">Alta capacidad, 2000 páginas.</p>
+                            <button class="btn btn-sm btn-outline-dark">Cotizar</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="impresoras">
+                        <div class="product-image">
+                            <span class="product-tag accessory">Accesorio</span>
+                            <i class="fas fa-cable-car placeholder-icon"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Cable USB Impresora</h4>
+                                <span class="product-price">$15.000</span>
+                            </div>
+                            <p class="product-desc">USB 2.0 tipo A-B, 2 metros.</p>
+                            <button class="btn btn-sm btn-outline-dark">Comprar</button>
+                        </div>
+                    </div>
+
+                    <!-- Cámaras y Seguridad - 4 productos -->
+                    <div class="product-card" data-category="seguridad">
+                        <div class="product-image">
+                            <span class="product-tag device">Equipo</span>
+                            <i class="fas fa-video placeholder-icon"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Kit Cámaras WiFi</h4>
+                                <span class="product-price">$350.000</span>
+                            </div>
+                            <p class="product-desc">2 Cámaras IP Exterior, Visión Nocturna.</p>
+                            <button class="btn btn-sm btn-outline-dark">Ver Kit</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="seguridad">
+                        <div class="product-image">
+                            <span class="product-tag device">Equipo</span>
+                            <i class="fas fa-bell placeholder-icon"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Alarma Inteligente</h4>
+                                <span class="product-price">$280.000</span>
+                            </div>
+                            <p class="product-desc">Control por app, sensores de movimiento.</p>
+                            <button class="btn btn-sm btn-outline-dark">Ver Detalles</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="seguridad">
+                        <div class="product-image">
+                            <span class="product-tag accessory">Accesorio</span>
+                            <i class="fas fa-door-closed placeholder-icon"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>Sensor Magnético</h4>
+                                <span class="product-price">$25.000</span>
+                            </div>
+                            <p class="product-desc">Para puertas y ventanas.</p>
+                            <button class="btn btn-sm btn-outline-dark">Comprar</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="seguridad">
+                        <div class="product-image">
+                            <span class="product-tag device">Equipo</span>
+                            <i class="fas fa-hard-drive placeholder-icon"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h4>DVR 8 Canales</h4>
+                                <span class="product-price">$420.000</span>
+                            </div>
+                            <p class="product-desc">Grabación Full HD, 1TB incluido.</p>
+                            <button class="btn btn-sm btn-outline-dark">Ver Detalles</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -265,6 +522,24 @@
     <a href="https://wa.me/573001234567" target="_blank" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Quote Modal -->
+    <div id="quoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Cotizar Servicio</h3>
+            <p id="modalServiceName" class="mb-4 text-muted">Servicio General</p>
+            <p>Selecciona tu medio de contacto preferido:</p>
+            <div class="modal-buttons">
+                <a href="#" id="whatsappLink" target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Chat WhatsApp
+                </a>
+                <a href="#contacto" class="btn btn-primary" onclick="closeQuoteModal()">
+                    <i class="fas fa-envelope"></i> Formulario
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
