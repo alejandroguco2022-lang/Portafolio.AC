@@ -65,25 +65,96 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form Submission
+    // Form Submission - Contact Form
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Simulate sending
-            const btn = contactForm.querySelector('button');
+            const btn = contactForm.querySelector('button[type="submit"]');
+            const statusMsg = document.getElementById('form-status');
             const originalText = btn.innerText;
 
             btn.innerText = 'Enviando...';
             btn.disabled = true;
+            statusMsg.textContent = '';
 
-            setTimeout(() => {
-                alert('¡Gracias por contactarnos! Nos comunicaremos contigo en el menor tiempo posible.');
-                contactForm.reset();
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    statusMsg.textContent = '¡Mensaje enviado con éxito! Nos contactaremos pronto.';
+                    statusMsg.style.color = '#00ff88';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Error al enviar el formulario');
+                }
+            } catch (error) {
+                statusMsg.textContent = 'Hubo un error. Por favor intenta nuevamente.';
+                statusMsg.style.color = '#ff4444';
+            } finally {
                 btn.innerText = originalText;
                 btn.disabled = false;
-            }, 1500);
+
+                // Clear status message after 5 seconds
+                setTimeout(() => {
+                    statusMsg.textContent = '';
+                }, 5000);
+            }
+        });
+    }
+
+    // Form Submission - Quote Form
+    const quoteForm = document.getElementById('quoteForm');
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const btn = quoteForm.querySelector('button[type="submit"]');
+            const statusMsg = document.getElementById('quote-status');
+            const originalText = btn.innerText;
+
+            btn.innerText = 'Enviando...';
+            btn.disabled = true;
+            statusMsg.textContent = '';
+
+            try {
+                const formData = new FormData(quoteForm);
+                const response = await fetch(quoteForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    statusMsg.textContent = '¡Cotización enviada con éxito! Te contactaremos pronto.';
+                    statusMsg.style.color = '#00ff88';
+                    quoteForm.reset();
+
+                    // Close modal after 2 seconds
+                    setTimeout(() => {
+                        closeQuoteModal();
+                        statusMsg.textContent = '';
+                    }, 2000);
+                } else {
+                    throw new Error('Error al enviar el formulario');
+                }
+            } catch (error) {
+                statusMsg.textContent = 'Hubo un error. Por favor intenta nuevamente.';
+                statusMsg.style.color = '#ff4444';
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
         });
     }
 
@@ -150,10 +221,14 @@ function openQuoteModal(serviceName) {
         modal.style.display = 'block';
         if (modalServiceName) modalServiceName.textContent = serviceName;
 
+        // Set service type in hidden field
+        const serviceTypeInput = document.getElementById('serviceType');
+        if (serviceTypeInput) serviceTypeInput.value = serviceName;
+
         // Update WhatsApp link with pre-filled message
         if (whatsappLink) {
             const message = `Hola, estoy interesado en cotizar el servicio de: ${serviceName}`;
-            whatsappLink.href = `https://wa.me/573001234567?text=${encodeURIComponent(message)}`;
+            whatsappLink.href = `https://wa.me/573143532307?text=${encodeURIComponent(message)}`;
         }
     }
 }
