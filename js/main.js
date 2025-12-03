@@ -103,10 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.innerText = originalText;
                 btn.disabled = false;
 
-                // Clear status message after 5 seconds
+                // Clear status message after 10 seconds
                 setTimeout(() => {
                     statusMsg.textContent = '';
-                }, 5000);
+                }, 10000);
             }
         });
     }
@@ -140,11 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     statusMsg.style.color = '#00ff88';
                     quoteForm.reset();
 
-                    // Close modal after 2 seconds
+                    // Close modal after 10 seconds
                     setTimeout(() => {
                         closeQuoteModal();
                         statusMsg.textContent = '';
-                    }, 2000);
+                    }, 10000);
                 } else {
                     throw new Error('Error al enviar el formulario');
                 }
