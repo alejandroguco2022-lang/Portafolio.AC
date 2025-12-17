@@ -253,3 +253,158 @@ window.addEventListener('click', (e) => {
 // Expose functions to global scope for HTML onclick attributes
 window.openQuoteModal = openQuoteModal;
 window.closeQuoteModal = closeQuoteModal;
+
+/* === LÓGICA ENCUESTA DE SATISFACCIÓN === */
+(function () {
+    const URL = "https://teachablemachine.withgoogle.com/models/engTbiRS5/";
+    let model, webcam, maxPredictions;
+    let isModelLoaded = false;
+    let isSurveyActive = false;
+    let currentQuestionIndex = 0;
+    let lastGestureTime = 0;
+    const GESTURE_DELAY = 3000;
+    const CONFIDENCE_THRESHOLD = 0.90;
+
+    const questions = [
+        "¿Te gusta el diseño?",
+        "¿La navegación es clara?",
+        "¿El contenido es relevante?",
+        "¿Crees que la velocidad es buena?",
+        "¿Recomendarías el portafolio?"
+    ];
+
+    const modal = document.getElementById('survey-modal');
+    const startBtn = document.getElementById('start-survey-btn');
+    const closeBtn = document.getElementById('close-modal-btn');
+    const questionEl = document.getElementById('current-question');
+    const feedbackEl = document.getElementById('gesture-feedback');
+    const progressBar = document.getElementById('progress-bar');
+    const surveyBody = document.getElementById('survey-body');
+    const surveyCompleted = document.getElementById('survey-completed');
+
+    if (startBtn) {
+        startBtn.addEventListener('click', () => {
+            modal.classList.remove('survey-hidden');
+            if (!isModelLoaded) {
+                init();
+            } else {
+                resetSurvey();
+            }
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('survey-hidden');
+            if (webcam) {
+                isSurveyActive = false;
+                webcam.stop();
+            }
+        });
+    }
+
+    async function init() {
+        isSurveyActive = true;
+        questionEl.innerText = "Cargando cámara y modelo...";
+
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        try {
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+
+            const flip = true;
+            webcam = new tmImage.Webcam(200, 200, flip);
+            await webcam.setup();
+            await webcam.play();
+            window.requestAnimationFrame(loop);
+
+            document.getElementById("webcam-container").innerHTML = "";
+            document.getElementById("webcam-container").appendChild(webcam.canvas);
+
+            isModelLoaded = true;
+            resetSurvey();
+
+        } catch (error) {
+            console.error("Error loading model:", error);
+            questionEl.innerText = "Error: Permite el acceso a la cámara.";
+        }
+    }
+
+    async function loop() {
+        if (isSurveyActive && webcam.canvas) {
+            webcam.update();
+            await predict();
+            window.requestAnimationFrame(loop);
+        }
+    }
+
+    async function predict() {
+        if (!isModelLoaded || !isSurveyActive) return;
+        if (Date.now() - lastGestureTime < GESTURE_DELAY) return;
+
+        const prediction = await model.predict(webcam.canvas);
+
+        let highestProb = 0;
+        let className = "";
+
+        for (let i = 0; i < maxPredictions; i++) {
+            if (prediction[i].probability > highestProb) {
+                highestProb = prediction[i].probability;
+                className = prediction[i].className;
+            }
+        }
+
+        if (highestProb >= CONFIDENCE_THRESHOLD) {
+            if (className === "PULGAR ARRIBA" || className === "PULGAR ABAJO") {
+                const answer = className === "PULGAR ARRIBA" ? "Si" : "No";
+                handleAnswer(answer);
+            } else if (className === "respuesta no valida") {
+                feedbackEl.innerText = "Respuesta No Válida!";
+                feedbackEl.style.color = "red";
+                feedbackEl.classList.remove('detected');
+            }
+        } else {
+            feedbackEl.innerText = "Esperando gesto...";
+            feedbackEl.style.color = "var(--survey-primary)";
+            feedbackEl.classList.remove('detected');
+        }
+    }
+
+    function handleAnswer(answer) {
+        lastGestureTime = Date.now();
+        feedbackEl.innerText = `¡Registrado: ${answer}!`;
+        feedbackEl.classList.add('detected');
+        setTimeout(() => { nextQuestion(); }, 2000);
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            questionEl.innerText = questions[currentQuestionIndex];
+            const progress = (currentQuestionIndex / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            feedbackEl.innerText = "Esperando gesto...";
+            feedbackEl.classList.remove('detected');
+        } else {
+            finishSurvey();
+        }
+    }
+
+    function finishSurvey() {
+        isSurveyActive = false;
+        progressBar.style.width = "100%";
+        surveyBody.classList.add('hidden');
+        surveyCompleted.classList.remove('hidden');
+    }
+
+    function resetSurvey() {
+        currentQuestionIndex = 0;
+        isSurveyActive = true;
+        surveyBody.classList.remove('hidden');
+        surveyCompleted.classList.add('hidden');
+        progressBar.style.width = "0%";
+        if (webcam && !webcam.playing) webcam.play();
+    }
+})();

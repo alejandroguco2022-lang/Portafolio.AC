@@ -572,11 +572,67 @@
         </div>
     </div>
 
+    <!-- === ENCUESTA DE SATISFACCIÓN === -->
+    <button id="start-survey-btn" class="floating-survey-btn">
+        <span class="icon">👋</span> Danos tu opinión
+    </button>
+
+    <div id="survey-modal" class="survey-modal survey-hidden">
+        <div class="survey-modal-content">
+            <button id="close-modal-btn" class="survey-close-btn">&times;</button>
+
+            <div class="survey-header">
+                <h2>Encuesta de Satisfacción</h2>
+                <div class="progress-container">
+                    <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div id="survey-body" class="survey-body">
+                <div id="question-container" class="question-container">
+                    <h3 id="current-question">Cargando modelo...</h3>
+                </div>
+
+                <div class="webcam-wrapper">
+                    <div id="webcam-container"></div>
+                    <div id="gesture-feedback" class="gesture-feedback">Esperando gesto...</div>
+                </div>
+
+                <div class="instructions">
+                    <p><span class="highlight">👍 Sí</span> &nbsp;|&nbsp; <span class="highlight">👎 No</span></p>
+                </div>
+            </div>
+
+            <div id="survey-completed" class="survey-completed hidden">
+                <div class="success-icon">🎉</div>
+                <h3>¡Gracias por tu feedback!</h3>
+                <p>Tus respuestas han sido registradas.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Librerías de IA (TensorFlow.js + Teachable Machine) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
     <script src="js/main.js"></script>
 
     <!-- Chatbase Chatbot -->
     <script>
         (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "0xQ0DIvNKsqkxCZEVkas4"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+    </script>
+    <!-- === VAPI VOICE AGENT === -->
+    <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"></script>
+    <script>
+        var vapiInstance = window.vapiSDK.run({
+            apiKey: '3f7cab26-a8c2-45cc-91f5-e606704c6675',
+            assistant: 'ebe550f0-9bad-4e38-8e23-dd868c7b655e',
+            config: {
+                position: "top-left",
+                offset: "80px"
+            }
+        });
     </script>
 </body>
 
